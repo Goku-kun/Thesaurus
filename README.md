@@ -1,6 +1,6 @@
 # Thesaurus
 
-> This is a thesaurus based on NodeJS made using datamuse API.
+> This is a thesaurus made using NodeJS and datamuse API.
 
 ## Table of contents
 
