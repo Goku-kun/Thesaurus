@@ -18,6 +18,7 @@ argument meanings:
 `
     )
     .options({
+        // creating options that will be used as options in command line.
         'w': {
             alias: 'word',
             demandOption: true,
@@ -70,30 +71,13 @@ argument meanings:
     .argv
 
 // Limit the number of output fetched and returned
-if (argv.m > 50) {
-    argv.m = 10;
-}
+checkAndLimitMax(argv);
 
 const url = `https://api.datamuse.com/words?&max=${argv.m}`
 
-
-
-if (argv.s) {
-    findSynonyms();
-} else if (argv.a) {
-    findAntonyms();
-} else if (argv.o) {
-    findSimilarSounds();
-} else if (argv.p) {
-    findSimilarSpells();
-} else if (argv.r) {
-    findRhymingWords();
-} else {
-    error('Improper usage of thesaurus', true)
-}
-
 /***************************** */
 
+// fetches the thesaurus based the word query and requirement
 function fetcher(queryString) {
     // TODO: add logic to fetch the query string
     const finalSearchString = url + queryString;
@@ -133,6 +117,13 @@ function findRhymingWords(word) {
     fetcher(queryString)
 }
 
+function checkAndLimitMax(argv) {
+    if (argv.m > 50) {
+        argv.m = 10;
+    }
+}
+
+// Iterates through the array and prints in the console
 function displayWords(array) {
     console.log(`
  ___________________
@@ -143,8 +134,12 @@ function displayWords(array) {
 |___________________|
 
     `);
-    for (let word of array) {
-        console.log(`▶  ${word.word}`)
+    if (array.length === 0) {
+        console.log('▶ The word you specified was not found.\n▶ Try again with another word?')
+    } else {
+        for (let word of array) {
+            console.log(`▶  ${word.word}`)
+        }
     }
 }
 
@@ -155,3 +150,21 @@ function error(msg, includeHelp = false) {
         console.log('print help using --help option to learn more about usage');
     }
 }
+
+// ********************************** 
+// main execution IIFE
+(function() {
+    if (argv.s) {
+        findSynonyms();
+    } else if (argv.a) {
+        findAntonyms();
+    } else if (argv.o) {
+        findSimilarSounds();
+    } else if (argv.p) {
+        findSimilarSpells();
+    } else if (argv.r) {
+        findRhymingWords();
+    } else {
+        error('Improper usage of thesaurus', true)
+    }
+})();
