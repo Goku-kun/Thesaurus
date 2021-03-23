@@ -61,7 +61,7 @@ To-do list:
 
 ## Status
 
-Project is: _finished_
+Project is: _online_
 
 Version 1.0.1 is active. More features will be added soon.
 
