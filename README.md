@@ -33,8 +33,8 @@ This project is about using the command line to make a thesaurus with different 
 * Node - version 14.15.0
 * Git and Github
 * Terminal
-* Yargs package
-* Node Fetch package
+* yargs package
+* node-fetch package
 
 ## Setup
 
@@ -56,13 +56,20 @@ List of features ready and TODOs for future development
 
 To-do list:
 
-* Find other features like finding general form of a word.
+* Add ability to interpret phrases.
+* Add progress bar
 
 ## Status
 
 Project is: _finished_
 
-Version 1.0.0 is active. More features will be added soon.
+Version 1.0.1 is active. More features will be added soon.
+
+### Patch 1.0.1 details
+* Updated the promise implementation to follow asyn-await
+* Displaying output for more than one operation in a single execution using the --all command
+* minor output detail changes
+* Code Refactoring
 
 ## Inspiration
 
