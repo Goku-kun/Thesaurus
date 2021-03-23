@@ -66,8 +66,8 @@ Project is: _online_
 Version 1.0.1 is active. More features will be added soon.
 
 ### Patch 1.0.1 details
-* Updated the promise implementation to follow asyn-await
-* Displaying output for more than one operation in a single execution using the --all command
+* Updated the promise implementation to follow async-await
+* Displaying output for all operations in a single execution using the --all command
 * minor output detail changes
 * Code Refactoring
 
